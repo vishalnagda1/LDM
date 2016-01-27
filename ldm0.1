@@ -1,0 +1,46 @@
+#
+# ::: LINUX DOWNLOAD MANAGER :::
+# Version : 0.2
+# Please Do Not Modify This File.
+# Author : Vishal Nagda
+#!/bin/bash
+#
+echo -e "URL : \c"
+read url
+clear
+echo -e "Please Wait...\n"
+wget -c -q --tries=10 --timeout=60 --show-progress "$url"
+ret=$?
+clear
+echo -e "\a"
+if [[ $ret == 0 ]]
+   then
+       echo "Download Completed."
+elif [[ $ret == 1 ]]
+   then
+       echo "Generic Error Occured."
+elif [[ $ret == 2 ]]
+   then 
+       echo "Parse Error."
+elif [[ $ret == 3 ]]
+   then
+       echo "File I/O Error."
+elif [[ $ret == 4 ]]
+   then
+       echo "Network Failure."
+elif [[ $ret == 5 ]]
+   then
+       echo "SSL Verification Failure."
+elif [[ $ret == 6 ]]
+   then
+       echo "Username/Password Authentication Failure."
+elif [[ $ret == 7 ]]
+   then
+       echo "Protocol Error."
+elif [[ $ret == 8 ]]
+   then
+       echo "Server Issued An Error Response."
+else
+       echo "Unknown Error : Download Failed."
+fi
+exit
